@@ -21,13 +21,6 @@ export class TodoService {
     x[0] = td;
   }
 
-  updateTodo(td:TodoItem,selected){
-    
-    let x = this.todos.filter((item) => item.id === td.id);
-     td.isComplete = selected;
-     x[0] = td;
-  }
-
   deleteTodo(id){
     this.todos = this.todos.filter((item) => item.id !== id);
     return this.todos;

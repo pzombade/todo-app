@@ -21,14 +21,12 @@ export class AppComponent {
   completedArray = ['No','Yes']
 
   constructor(private todoService:TodoService){
-    this.defaultColDef = {
-      flex: 1,
-      resizable: true,
-    };
+    
   }
 
   ngOnInit(){
     this.columnDefs = this.todoService.getTodoAgGridColumnDefs(this.priorityArray,this.completedArray);
+    this.defaultColDef = this.todoService.getDefaultTodoAgGridColumnDefs();
 
     for(let i=0; i<1; i++){
       this.todoService.addTodo("Test_"+i,2);
