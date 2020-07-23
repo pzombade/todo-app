@@ -5,9 +5,11 @@
     "todo.form.label": "名Todo Label名",
     "todo.form.priority": "名Priority名",
     "todo.form.addTodo": "名Add Todo名",
+    "todo.form.addTodoBtn": "名Add Todo名",
 
     "todo.table.id": "名Id名",
     "todo.table.priority": "名Priority名",
     "todo.table.todoText": "名Label名",
-    "todo.table.isComplete": "名Completed名"
+    "todo.table.isComplete": "名Completed名",
+    "todo.table.norows": "名No pending tasks! Start adding now.名"
 }

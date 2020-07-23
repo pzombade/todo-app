@@ -18,9 +18,14 @@ export class AppComponent {
   gridApi;
   defaultColDef;
   columnDefs;
+  isPageLoaded=false;
   
   priorityArray = [0,1,2,3];
-  completedArray = ['No','Yes']
+  completedArray = ['No','Yes'];
+
+  gridOptions = {
+    localeText: { noRowsToShow: 'No Todos!' },
+  }
 
   constructor(private todoService:TodoService, private translate: TranslateService){
     // this language will be used as a fallback when a translation isn't found in the current language
@@ -39,16 +44,22 @@ export class AppComponent {
   ngOnInit(){
     this.defaultColDef = this.todoService.getDefaultTodoAgGridColumnDefs();
     this.columnDefs = this.todoService.getTodoAgGridColumnDefs(this.priorityArray,this.completedArray);
+    //this.loadRows();
+    this.rowData = this.todoService.getAllTodos();
+  }
 
+  loadRows(){
     for(let i=0; i<1; i++){
       this.todoService.addTodo("Test_"+i,2);
     }
-    this.rowData = this.todoService.getAllTodos();
   }
 
   
   ngAfterViewChecked(){
-    this.useLanguage('en');  
+    if(!this.isPageLoaded){
+      this.useLanguage('en'); 
+      this.isPageLoaded = true;
+    }
   }
 
   deleteSelectedRows() {

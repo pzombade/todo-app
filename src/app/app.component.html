@@ -11,7 +11,7 @@
                 <select class="priority-dropdown" [(ngModel)]="selectedPriority" [ngModelOptions]="{standalone: true}">
                     <option *ngFor="let x of priorityArray" [value]="x">{{x}}</option>
                 </select>
-                <button>Add Todo</button>
+                <button>{{"todo.form.addTodoBtn"| translate}}</button>
             </form>
          </div>
     </div>
@@ -27,6 +27,7 @@
     [rowSelection]="'multiple'"
     [columnDefs]="columnDefs"
     [defaultColDef]="defaultColDef"
+    [gridOptions]="gridOptions"
     suppressRowClickSelection
     (cellValueChanged)="onCellValueChanged($event)"
     (gridReady)="onGridReady($event)"

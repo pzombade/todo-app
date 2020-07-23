@@ -5,9 +5,12 @@
     "todo.form.label": "Todo Label",
     "todo.form.priority": "Priority",
     "todo.form.addTodo": "Add Todo",
+    "todo.form.addTodoBtn": "Add Todo",
 
     "todo.table.id": "Id",
     "todo.table.priority": "Priority",
     "todo.table.todoText": "Label",
-    "todo.table.isComplete": "Completed"
+    "todo.table.isComplete": "Completed",
+    "todo.table.norows": "No pending tasks! Start adding now."
+    
 }
