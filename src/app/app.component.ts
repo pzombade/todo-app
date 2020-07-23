@@ -14,12 +14,10 @@ export class AppComponent {
   @Input() todoText;
   @Input() @Output() selectedPriority:number = 2;
   
-
   rowData:TodoItem[] = [];
   gridApi;
   defaultColDef;
   columnDefs;
-
   
   priorityArray = [0,1,2,3];
   completedArray = ['No','Yes']
@@ -40,13 +38,17 @@ export class AppComponent {
 
   ngOnInit(){
     this.defaultColDef = this.todoService.getDefaultTodoAgGridColumnDefs();
-   this.columnDefs = this.todoService.getTodoAgGridColumnDefs(this.priorityArray,this.completedArray);
-  
+    this.columnDefs = this.todoService.getTodoAgGridColumnDefs(this.priorityArray,this.completedArray);
 
     for(let i=0; i<1; i++){
       this.todoService.addTodo("Test_"+i,2);
     }
     this.rowData = this.todoService.getAllTodos();
+  }
+
+  
+  ngAfterViewChecked(){
+    this.useLanguage('en');  
   }
 
   deleteSelectedRows() {
