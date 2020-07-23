@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { TodoItem, Priorities } from './todo-item';
+import { TranslateService } from '@ngx-translate/core';
+import { ICellRendererParams } from 'ag-grid-community';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +10,7 @@ export class TodoService {
 
   todos:TodoItem[] = [];
   lastItemIndex = 0;
-  constructor() { }
+  constructor( private translate: TranslateService) { }
 
   addTodo(text:string, id){
     const priority = parseInt(id);
@@ -30,6 +32,11 @@ export class TodoService {
     return this.todos;
   }
 
+  public localizeHeader(parameters: ICellRendererParams): string {
+    let headerIdentifier = parameters.colDef.field;
+    return this.translate.instant("todo.table."+headerIdentifier);
+  }
+
   getTodoAgGridColumnDefs(priorityArray,completedArray){
     return [
       {headerName: 'Id', field: 'id',headerCheckboxSelection: true,checkboxSelection: true},
@@ -40,10 +47,11 @@ export class TodoService {
         }
       },
       {headerName: 'Label', field: 'todoText', editable: true,cellRenderer: (params) => {
+        const text = this.translate.instant(params.data.todoText);
         if(params.data.isComplete){
-          return '<div style="text-decoration:line-through">'+params.data.todoText+'</div>';
+          return '<div style="text-decoration:line-through">'+text+'</div>';
         }else{
-          return '<div style="text-decoration:none">'+params.data.todoText+'</div>';
+          return '<div style="text-decoration:none">'+text+'</div>';
         }
       }},
       {headerName: 'Completed', field: 'isComplete', editable:true, cellEditor: 'agSelectCellEditor',
@@ -66,6 +74,8 @@ export class TodoService {
     return {
       flex: 1,
       resizable: true,
+      headerValueGetter: this.localizeHeader.bind(this)
     };
   }  
+  
 }

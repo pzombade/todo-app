@@ -1,0 +1,13 @@
+{
+    "demo.title": "ßTranslation demo from Enß",
+    "demo.text": "ßThis is a simple demonstration app for ngx-translateß",
+
+    "todo.form.label": "ßTodo Labelß",
+    "todo.form.priority": "ßPriorityß",
+    "todo.form.addTodo": "ßAdd Todoß",
+
+    "todo.table.id": "ßIdß",
+    "todo.table.priority": "ßPriorityß",
+    "todo.table.todoText": "ßLabelß",
+    "todo.table.isComplete": "ßCompletedß"
+}

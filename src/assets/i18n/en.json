@@ -1,0 +1,13 @@
+{
+    "todo.title": "Todo Tracker",
+    "todo.description": "Your Multilingual Todo Tracker",
+
+    "todo.form.label": "Todo Label",
+    "todo.form.priority": "Priority",
+    "todo.form.addTodo": "Add Todo",
+
+    "todo.table.id": "Id",
+    "todo.table.priority": "Priority",
+    "todo.table.todoText": "Label",
+    "todo.table.isComplete": "Completed"
+}

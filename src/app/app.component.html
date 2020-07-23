@@ -1,10 +1,13 @@
+
+<h1>{{ 'todo.title' | translate }}</h1>
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
             <form name="add" (submit)="addTodo()">
-                <label class="todo-label">Todo Label:</label>
+                <label class="todo-label">{{"todo.form.label"| translate}}:</label>
                 <input width="100%" type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="todoText"/>
-                <label>Priority:</label>
+                <label>{{"todo.form.priority"| translate}}:</label>
                 <select class="priority-dropdown" [(ngModel)]="selectedPriority" [ngModelOptions]="{standalone: true}">
                     <option *ngFor="let x of priorityArray" [value]="x">{{x}}</option>
                 </select>
@@ -15,7 +18,7 @@
 </div> 
 
 <ag-grid-angular 
-    style="width: 100%; height: 500px;" 
+    style="width: 100%; height: 350px;" 
     class="ag-theme-balham"
     [rowData]="rowData" 
     [enableSorting]="true"
@@ -30,3 +33,7 @@
     (cellKeyPress)="cellKeyDown($event)"
     (cellKeyDown)="cellKeyDown($event)">
 </ag-grid-angular>
+
+<button (click)="useLanguage('en')">English</button>
+<button (click)="useLanguage('de')">German</button>
+<button (click)="useLanguage('zh')">Chinese</button>

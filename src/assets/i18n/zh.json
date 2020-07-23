@@ -1,0 +1,13 @@
+{
+    "demo.title": "名Translation demo from En名",
+    "demo.text": "名This is a simple demonstration app for ngx-translate名",
+
+    "todo.form.label": "名Todo Label名",
+    "todo.form.priority": "名Priority名",
+    "todo.form.addTodo": "名Add Todo名",
+
+    "todo.table.id": "名Id名",
+    "todo.table.priority": "名Priority名",
+    "todo.table.todoText": "名Label名",
+    "todo.table.isComplete": "名Completed名"
+}

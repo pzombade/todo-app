@@ -1,6 +1,8 @@
 import { Component, Input, Output } from '@angular/core';
-import { TodoItem, Priorities } from './todo-item';
+import { TodoItem } from './todo-item';
 import { TodoService } from './todo.service';
+import {TranslateService} from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-root',
@@ -11,22 +13,35 @@ export class AppComponent {
 
   @Input() todoText;
   @Input() @Output() selectedPriority:number = 2;
+  
 
   rowData:TodoItem[] = [];
   gridApi;
   defaultColDef;
   columnDefs;
+
   
   priorityArray = [0,1,2,3];
   completedArray = ['No','Yes']
 
-  constructor(private todoService:TodoService){
-    
+  constructor(private todoService:TodoService, private translate: TranslateService){
+    // this language will be used as a fallback when a translation isn't found in the current language
+    translate.setDefaultLang('en');
+
+    // the lang to use, if the lang isn't available, it will use the current loader to get them
+    translate.use('en');
+  }
+
+  useLanguage(language: string) {
+    this.translate.use(language).subscribe(()=>{
+      this.columnDefs = this.todoService.getTodoAgGridColumnDefs(this.priorityArray,this.completedArray);
+    });
   }
 
   ngOnInit(){
-    this.columnDefs = this.todoService.getTodoAgGridColumnDefs(this.priorityArray,this.completedArray);
     this.defaultColDef = this.todoService.getDefaultTodoAgGridColumnDefs();
+   this.columnDefs = this.todoService.getTodoAgGridColumnDefs(this.priorityArray,this.completedArray);
+  
 
     for(let i=0; i<1; i++){
       this.todoService.addTodo("Test_"+i,2);
@@ -35,12 +50,15 @@ export class AppComponent {
   }
 
   deleteSelectedRows() {
-    const selectRows = this.gridApi.getSelectedRows();
-    selectRows.map((rowToDelete) => {
-         console.log("Delete " + rowToDelete);
-         this.rowData = this.todoService.deleteTodo(rowToDelete.id);
-         this.gridApi.setRowData(this.rowData);
-    });
+    const sureToDelete = confirm("Plase confirm to delete the selected rows.");
+    if(sureToDelete){
+      const selectRows = this.gridApi.getSelectedRows();
+      selectRows.map((rowToDelete) => {
+          console.log("Delete " + rowToDelete);
+          this.rowData = this.todoService.deleteTodo(rowToDelete.id);
+          this.gridApi.setRowData(this.rowData);
+      });
+    }
   }
 
   markSelectedRows(markFlag) {
@@ -62,13 +80,9 @@ export class AppComponent {
     }
   }
 
-  deleteTodo(id){
-    this.rowData = this.todoService.deleteTodo(id);
-    this.gridApi.setRowData(this.rowData);
-  }
-
   onGridReady(params) {
     this.gridApi = params.api;
+    this.useLanguage('en');
   }
 
   onCellValueChanged(params: any) {
