@@ -17,7 +17,7 @@ Import and export of todos in excel/csv/xml/json/pdf formats.
 Backup and restore feature.
 Support for hand held devices. Deleteing of todos is a tedious task on mobile devices.
 
-The application is hosted on https://practical-swanson-1cd371.netlify.app/
+Master branch of the application is hosted on https://practical-swanson-1cd371.netlify.app/
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.1.
 
