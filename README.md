@@ -1,9 +1,9 @@
 # TodoApp 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/39985b3a-3f3b-4356-a1a9-8ea563d1e256/deploy-status)](https://app.netlify.com/sites/practical-swanson-1cd371/deploys)
 
-This is a simple Todo web application.
+This is a single page simple Todo web application.
+It has following primary features.
 
-  - It has following primary features.
   - Add todo tasks.
   - Mark one or more todos as complete.
   - Update existing todo.
@@ -25,7 +25,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 For any queries please shoot an email to prashantzombade@gmail.com
 
 ## Development server
-
+git clone https://github.com/pzombade/todo-app.git  my-todo-app
+cd my-todo-app
+npm install
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
