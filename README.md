@@ -21,6 +21,8 @@ Master branch of the application is hosted on https://practical-swanson-1cd371.n
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.1.
 
+For any queries please shoot an email to prashantzombade@gmail.com
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
